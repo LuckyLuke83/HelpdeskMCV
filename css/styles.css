@@ -426,3 +426,68 @@ nav {
   color: var(--white);
   background-color: var(--primary1);
 }
+
+
+/* Ticket section */
+
+.form_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form_row {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1.6rem;
+  /* padding: 1rem 0; */
+}
+
+.form_text {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form_row textarea,
+.form_row input,
+.form_row select {
+  width: 100%;
+  font-family: inherit;
+  padding: 0.5rem;
+}
+
+#soft_version {
+  width: 50%;
+}
+
+#submit {
+  border: none;
+  background-color: var(--primary1);
+  color: var(--white);
+  font-weight: 500;
+  padding: 1rem 0;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#submit:hover {
+  background-color: var(--primary2);
+}
+
+.download_btn {
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--black);
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.15rem 1rem;
+  transition: var(--transition);
+}
+
+.download_btn:hover {
+  background-color: var(--primary1);
+  border: 1px solid var(--primary1);
+  color: var(--white);
+}
