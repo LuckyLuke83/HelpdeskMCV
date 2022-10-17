@@ -71,6 +71,25 @@ h3 {
   background-color: var(--black);
 }
 
+main {
+  font-family: inherit;
+  font-size: 1.6em;
+}
+
+aside {
+  align-self: start;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  border: solid 3px var(--grey);
+  box-shadow: var(--shadow2);
+}
+
+aside p {
+  margin-bottom: 1rem;
+}
+
 nav {
   display: flex;
   justify-content: flex-end;
@@ -246,7 +265,6 @@ nav {
   color: var(--black);
 }
 
-
 .log_window {
   width: 100vw;
   height: 100vh;
@@ -327,25 +345,6 @@ nav {
   border-right: solid 2px var(--grey);
 }
 
-main {
-  font-family: inherit;
-  font-size: 1.6em;
-}
-
-aside {
-  align-self: start;
-  padding: 1rem;
-  font-family: inherit;
-  font-size: 1.8rem;
-  border-radius: 5px;
-  border: solid 3px var(--grey);
-  box-shadow: var(--shadow2);
-}
-
-aside p {
-  margin-bottom: 1rem;
-}
-
 .quick_links_ul {
   list-style-type: none;
   display: flex;
@@ -375,15 +374,55 @@ aside p {
 
 /* DOWNLOAD */
 
-.download_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'header header'
-    'new_soft old_soft';
-}
-
 .soft_name {
   grid-area: header;
+}
+
+.soft_section {
+  border: solid 2px var(--grey);
+  border-radius: 5px;
+  padding: 1.6rem;
+  box-shadow: var(--shadow2);
+  transition: var(--transition);
+}
+
+.soft_section:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.soft_ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.soft_li {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: var(--text-small);
+}
+
+.soft_btn:link,
+.soft_btn:visited {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 12rem;
+  color: var(--black);
+  background-color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  border: solid 2px var(--grey);
+  transition: var(--transition);
+}
+
+.soft_btn:hover,
+.soft_btn:active {
+  color: var(--white);
+  background-color: var(--primary1);
 }

@@ -20,7 +20,7 @@
     font-size: 1.2rem;
   }
 
-  .main_section {
+  .solutions {
     display: grid;
     grid-template-columns: auto 25rem;
     grid-template-rows: auto;
@@ -28,10 +28,23 @@
     padding: 2rem 1rem;
   }
 
-  /* .main_section {
-    width: 768px;
-  } */
+  .nav_account_settings:hover,
+  .nav_account_settings:active {
+    transition: scale(1.1);
+  }
 
+  
+  .main_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2rem;
+    grid-template-areas:
+      'header header'
+      'new_soft old_soft';
+    font-size: var(--text-regular);
+  }
+  
   main {
     font-size: 1.4rem;
   }
