@@ -81,9 +81,11 @@ aside {
   padding: 1rem;
   font-family: inherit;
   font-size: 1.8rem;
+  line-height: 2.4rem;;
   border-radius: 5px;
   border: solid 3px var(--grey);
   box-shadow: var(--shadow2);
+  background-color: var(--white);
 }
 
 aside p {
