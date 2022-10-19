@@ -71,9 +71,20 @@ h3 {
   background-color: var(--black);
 }
 
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  height: 6rem;
+}
+
 main {
   font-family: inherit;
   font-size: 1.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 aside {
@@ -92,12 +103,8 @@ aside p {
   margin-bottom: 1rem;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
-  height: 6rem;
+.section-2 {
+  padding: 1rem 1rem;
 }
 
 .nav_logo img {
