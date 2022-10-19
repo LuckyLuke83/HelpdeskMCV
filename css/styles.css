@@ -60,6 +60,76 @@ h3 {
   font-weight: 500;
 }
 
+/* Logging section */
+.log_window {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.log_window img {
+  width: 38rem;
+}
+
+.login {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 3rem;
+}
+
+.sold_to {
+  font-family: inherit;
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.btn_log {
+  cursor: pointer;
+  padding: 0 1.5rem;
+  background-color: var(--primary1);
+  border: none;
+  height: 100%;
+  color: var(--white);
+  border-radius: 2px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.btn_log:hover,
+.btn_log:active {
+  background-color: var(--primary1_shades);
+}
+
+.sold_info {
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.sold_find {
+  background-color: var(--white);
+  border: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.wrong_sold_to {
+  font-size: 1.2rem;
+  color: red;
+  text-align: center;
+}
+
+/* App section */
+
 .main_container {
   width: 100%;
 }
@@ -137,25 +207,6 @@ aside p {
 
 .nav_btn_active{
   border-bottom: 3px solid var(--primary2);
-}
-
-.download_dropdown {
-  width: 100%;
-  display: none;
-  position: absolute;
-  top: 2.8rem;
-  z-index: 1;
-}
-
-.download_dropdown a {
-  font-size: 1.8rem;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--primary2);
-  padding: 1rem 1rem;
-  border-bottom: 2px solid var(--primary2_shades);
-  text-decoration: none;
-  display: block;
 }
 
 .nav_account_settings {
@@ -274,85 +325,7 @@ aside p {
   color: var(--black);
 }
 
-.log_window {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.log_window img {
-  width: 38rem;
-}
-
-.login {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 3rem;
-}
-
-.sold_to {
-  font-family: inherit;
-  height: 100%;
-  padding: 0 0.5rem;
-}
-
-.btn_log {
-  cursor: pointer;
-  padding: 0 1.5rem;
-  background-color: var(--primary1);
-  border: none;
-  height: 100%;
-  color: var(--white);
-  border-radius: 2px;
-  font-family: inherit;
-  transition: var(--transition);
-}
-
-.btn_log:hover,
-.btn_log:active {
-  background-color: var(--primary1_shades);
-}
-
-.sold_info {
-  margin-top: 1rem;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 0.5rem;
-}
-
-.sold_find {
-  background-color: var(--white);
-  border: none;
-  font-size: 1.4rem;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.wrong_sold_to {
-  font-size: 1.2rem;
-  color: red;
-  text-align: center;
-}
-
 /* Main content */
-
-.main_content {
-  display: grid;
-  grid-template-columns: auto 20rem;
-  grid-template-rows: auto;
-  gap: 1rem;
-  min-height: 38rem;
-  padding: 2rem 1rem;
-  border-left: solid 2px var(--grey);
-  border-right: solid 2px var(--grey);
-}
 
 .quick_links_ul {
   list-style-type: none;
