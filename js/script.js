@@ -2,52 +2,17 @@
 import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
-
-//Storing customer account in variable
-let currentAccount;
-
 //ELEMENTS
 const btnLog = document.querySelector('.btn_log');
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 const inputField = document.getElementById('mySearch');
-
 const helpTopicList = document.getElementById('myMenu');
 const helpSubject = helpTopicList.getElementsByTagName('li');
 const searchBtn = document.querySelector('.search_btn');
-
 const accountSettings = document.querySelector('.nav_account_settings');
 const accountSettingsClose = document.querySelector('.closebtn');
 const logOut = document.querySelector('.log_out');
-let logged = sessionStorage.getItem('ifLogged');
-
-//controler
-// LOGGING TO SYSTEM (Button)
-btnLog.addEventListener('click', function (e) {
-  e.preventDefault();
-  // Checking Sold to (if correct)
-
-  loggingToAccount();
-  showingApp();
-});
-
-// LOGGING TO SYSTEM (ENTER)
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter' && companySoldTo.value.length !== 0) {
-    loggingToAccount();
-    showingApp();
-  }
-});
-
-//Opening account settings
-accountSettings.addEventListener('click', function () {
-  showingSettings();
-});
-
-//Closing accounts settings
-accountSettingsClose.addEventListener('click', function () {
-  hiddingSettings();
-});
 
 //MODEL
 //Logging out
@@ -77,28 +42,6 @@ class Customer {
     //wymyślić usuwanie
   }
 }
-
-//model
-function loggingToAccount() {
-  currentAccount = accounts.find(
-    acc => acc.soldTo === Number(companySoldTo.value)
-  );
-
-  //Guard clause
-  if (!currentAccount) {
-    //Add informaction about wrong soldto
-    wrongSoldTo.classList.remove('hidden');
-    //delete input field
-    companySoldTo.value = '';
-    return;
-  }
-
-  logged = true;
-  sessionStorage.setItem('ifLogged', logged);
-  sessionStorage.setItem('client', JSON.stringify(currentAccount));
-  companySoldTo.value = '';
-}
-
 
 //view
 function displayingHelpTopic() {
@@ -146,6 +89,33 @@ nav.addEventListener('click', function (e) {
 });
 
 //PROPER CONTROLER DATA
+// LOGGING TO SYSTEM (Button)
+btnLog.addEventListener('click', function (e) {
+  e.preventDefault();
+  // Checking Sold to (if correct)
+  model.loggingToAccount(accounts);
+  view.showingApp();
+});
+
+// LOGGING TO SYSTEM (ENTER)
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && companySoldTo.value.length !== 0) {
+    model.loggingToAccount(accounts);
+    view.showingApp();
+  }
+});
+
+//Opening account settings
+accountSettings.addEventListener('click', function () {
+  view.showingSettings(accountSettings);
+});
+
+//Closing accounts settings
+accountSettingsClose.addEventListener('click', function () {
+  view.hiddingSettings(accountSettings);
+});
+
+
 // helpTopicList.addEventListener('click', model.displayHelpContent());
 // searchBtn.addEventListener('click', model.displaySearchContent())
 

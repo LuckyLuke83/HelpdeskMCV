@@ -2,6 +2,7 @@
 const logWindow = document.querySelector('.log_window');
 const appWindow = document.querySelector('.main_container');
 
+
 let logged = sessionStorage.getItem('ifLogged');
 
 export const checkLog = function () {
@@ -22,15 +23,15 @@ export const hidingApp = function () {
     appWindow.classList.add('hidden');
   }
   
-export const showingSettings = function () {
+export const showingSettings = function (button) {
     document.getElementById('mySidenav').style.width = '250px';
-    accountSettings.style.color = '#2b2b2b';
+    button.style.color = '#2b2b2b';
   }
   
   
-export const hiddingSettings = function () {
+export const hiddingSettings = function (button) {
     document.getElementById('mySidenav').style.width = '0';
-    accountSettings.style.color = '#fafafa';
+    button.style.color = '#fafafa';
   }
 
 export const showingApp = function () {

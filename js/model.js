@@ -1,5 +1,29 @@
 'use strict'
 const helpTopics = document.querySelectorAll('.help_topic');
+let logged = sessionStorage.getItem('ifLogged');
+
+let currentAccount;
+
+export const loggingToAccount = function(accountsDataBase) {
+    currentAccount = accountsDataBase.find(
+      acc => acc.soldTo === Number(companySoldTo.value)
+    );
+  
+    //Guard clause
+    if (!currentAccount) {
+      //Add informaction about wrong soldto
+      wrongSoldTo.classList.remove('hidden');
+      //delete input field
+      companySoldTo.value = '';
+      return;
+    }
+  
+    logged = true;
+    sessionStorage.setItem('ifLogged', logged);
+    sessionStorage.setItem('client', JSON.stringify(currentAccount));
+    companySoldTo.value = '';
+  }
+
 //displaying Help topics in main section after clicking on topic
 export const displayHelpContent = function (e) {
     const clicked = e.target.closest('.help_topic_li').innerHTML.toLowerCase();
@@ -63,3 +87,5 @@ export const displayHelpContent = function (e) {
 //       }
 //     }
 //   }
+
+
