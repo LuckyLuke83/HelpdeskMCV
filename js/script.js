@@ -1,5 +1,12 @@
 'use strict';
 
+import {accounts} from './customerDataBase.js'
+
+console.log(accounts)
+
+//Storing customer account in variable
+let currentAccount;
+
 //ELEMENTS
 const logWindow = document.querySelector('.log_window');
 const btnLog = document.querySelector('.btn_log');
@@ -16,6 +23,7 @@ const accountSettingsClose = document.querySelector('.closebtn');
 const logOut = document.querySelector('.log_out');
 let logged = sessionStorage.getItem('ifLogged');
 
+//model
 const checkLog = function () {
   logged = logged === 'true';
   if (logged) {
@@ -27,6 +35,7 @@ const checkLog = function () {
   }
 };
 
+//controler
 // LOGGING TO SYSTEM (Button)
 btnLog.addEventListener('click', function (e) {
   e.preventDefault();
@@ -44,6 +53,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//VIEW
 //Searching bar topics
 function serchFilter() {
   let filter, a;
@@ -69,7 +79,7 @@ function serchFilter() {
   }
 }
 
-//
+//VIEW
 
 //Opening account settings
 accountSettings.addEventListener('click', function () {
@@ -81,6 +91,8 @@ accountSettingsClose.addEventListener('click', function () {
   hiddingSettings();
 });
 
+
+//VIEW
 //displaying Help topics in main section after clicking on topic
 helpTopicList.addEventListener('click', function (e) {
   const clicked = e.target.closest('.help_topic_li').innerHTML.toLowerCase();
@@ -105,6 +117,7 @@ helpTopicList.addEventListener('click', function (e) {
   document.querySelector(`.${initials}`).classList.remove('hidden');
 });
 
+//VIEW
 //displaying Help topics in main section after clicking on btn
 searchBtn.addEventListener('click', function () {
   //Guard clause
@@ -121,8 +134,7 @@ searchBtn.addEventListener('click', function () {
   displayingHelpTopic();
 });
 
-//hidding quick links arrow
-
+//MODEL
 //Logging out
 logOut.addEventListener('click', function (e) {
   e.preventDefault();
@@ -153,31 +165,7 @@ class Customer {
   }
 }
 
-//database
-const account1 = {
-  company: 'ZPUE',
-  soldTo: 1111,
-  soft: ['SE', 'NX'],
-};
 
-const account2 = {
-  company: 'SaMAsz',
-  soldTo: 2222,
-  soft: ['SE'],
-};
-
-const account3 = {
-  company: 'Triggo',
-  soldTo: 3333,
-  soft: ['NX'],
-};
-
-// const account4 = new Account('Trela', 4444, ['NX']);
-
-const accounts = [account1, account2, account3];
-
-//Storing customer account in variable
-let currentAccount;
 
 
 //view
@@ -243,6 +231,7 @@ function displayingHelpTopic() {
 }
 
 
+//VIEW
 //nav buttons logic
 
 //Wszystkie Przyciski 
