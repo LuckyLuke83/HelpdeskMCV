@@ -1,39 +1,25 @@
 'use strict';
-
 import {accounts} from './customerDataBase.js'
-
-console.log(accounts)
+import * as view from './view.js'
+import * as model from './model.js' 
 
 //Storing customer account in variable
 let currentAccount;
 
 //ELEMENTS
-const logWindow = document.querySelector('.log_window');
 const btnLog = document.querySelector('.btn_log');
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
-const appWindow = document.querySelector('.main_container');
 const inputField = document.getElementById('mySearch');
-const searchBtn = document.querySelector('.search_btn');
+
 const helpTopicList = document.getElementById('myMenu');
 const helpSubject = helpTopicList.getElementsByTagName('li');
-const helpTopics = document.querySelectorAll('.help_topic');
+const searchBtn = document.querySelector('.search_btn');
+
 const accountSettings = document.querySelector('.nav_account_settings');
 const accountSettingsClose = document.querySelector('.closebtn');
 const logOut = document.querySelector('.log_out');
 let logged = sessionStorage.getItem('ifLogged');
-
-//model
-const checkLog = function () {
-  logged = logged === 'true';
-  if (logged) {
-    showingApp();
-    // return;
-  } else {
-    hidingApp();
-    hiddingSettings();
-  }
-};
 
 //controler
 // LOGGING TO SYSTEM (Button)
@@ -53,34 +39,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-//VIEW
-//Searching bar topics
-function serchFilter() {
-  let filter, a;
-
-  // Displaying topic list
-  helpTopicList.classList.remove('hidden');
-
-  //Hidding list when input field is empty
-  if (inputField.value.length === 0) {
-    helpTopicList.classList.add('hidden');
-  }
-
-  filter = inputField.value.toUpperCase();
-
-  //Leaving only matching elements
-  for (let i = 0; i < helpSubject.length; i++) {
-    a = helpSubject[i].getElementsByTagName('a')[0];
-    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      helpSubject[i].style.display = '';
-    } else {
-      helpSubject[i].style.display = 'none';
-    }
-  }
-}
-
-//VIEW
-
 //Opening account settings
 accountSettings.addEventListener('click', function () {
   showingSettings();
@@ -89,49 +47,6 @@ accountSettings.addEventListener('click', function () {
 //Closing accounts settings
 accountSettingsClose.addEventListener('click', function () {
   hiddingSettings();
-});
-
-
-//VIEW
-//displaying Help topics in main section after clicking on topic
-helpTopicList.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.help_topic_li').innerHTML.toLowerCase();
-
-  //hiding all help topics
-
-  helpTopics.forEach(topic => topic.classList.add('hidden'));
-
-  //hidding help topics list
-  helpTopicList.classList.add('hidden');
-
-  //clearing searchbar
-  inputField.value = '';
-
-  //Creating initials
-  const initials = clicked
-    .split(' ')
-    .map(word => word[0])
-    .join('');
-
-  //showing article
-  document.querySelector(`.${initials}`).classList.remove('hidden');
-});
-
-//VIEW
-//displaying Help topics in main section after clicking on btn
-searchBtn.addEventListener('click', function () {
-  //Guard clause
-  if (inputField.value.length === 0) {
-    return;
-  }
-
-  //Creating initials
-  const initials = inputField.value
-    .split(' ')
-    .map(word => word[0])
-    .join('');
-
-  displayingHelpTopic();
 });
 
 //MODEL
@@ -143,8 +58,6 @@ logOut.addEventListener('click', function (e) {
   // hidingApp();
   // hiddingSettings();
 });
-
-
 
 //model
 class Customer {
@@ -163,17 +76,6 @@ class Customer {
   removeSoft(val) {
     //wymyślić usuwanie
   }
-}
-
-
-
-
-//view
-function showingApp() {
-  // Hiding Login box
-  logWindow.classList.add('hidden');
-  // Displaying main page
-  appWindow.classList.remove('hidden');
 }
 
 //model
@@ -199,27 +101,6 @@ function loggingToAccount() {
 
 
 //view
-function hidingApp() {
-  // Displaying Login box
-  logWindow.classList.remove('hidden');
-  // Hiding main page
-  appWindow.classList.add('hidden');
-}
-
-//view
-function showingSettings() {
-  document.getElementById('mySidenav').style.width = '250px';
-  accountSettings.style.color = '#2b2b2b';
-}
-
-
-//view
-function hiddingSettings() {
-  document.getElementById('mySidenav').style.width = '0';
-  accountSettings.style.color = '#fafafa';
-}
-
-//view
 function displayingHelpTopic() {
   //showing article
   document.querySelector(`.${this.initials}`).classList.remove('hidden');
@@ -229,8 +110,6 @@ function displayingHelpTopic() {
   //hidding help topics list
   helpTopicList.classList.add('hidden');
 }
-
-
 //VIEW
 //nav buttons logic
 
@@ -247,7 +126,7 @@ console.log(sectionElements);
 
 nav.addEventListener('click', function (e) {
   const clicked = e.target.closest('.nav_btn');
-  console.log(clicked);
+  
   // Guard clause
   if (!clicked) return;
 
@@ -266,4 +145,9 @@ nav.addEventListener('click', function (e) {
     .classList.remove('hidden');
 });
 
-checkLog();
+//PROPER CONTROLER DATA
+// helpTopicList.addEventListener('click', model.displayHelpContent());
+// searchBtn.addEventListener('click', model.displaySearchContent())
+
+
+view.checkLog();
