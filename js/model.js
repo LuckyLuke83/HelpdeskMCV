@@ -1,12 +1,15 @@
 'use strict'
 const helpTopics = document.querySelectorAll('.help_topic');
 let logged = sessionStorage.getItem('ifLogged');
+const companySoldTo = document.querySelector('.sold_to');
 
 let currentAccount;
+let currentSoldTo;
 
 export const loggingToAccount = function(accountsDataBase) {
+    currentSoldTo = document.querySelector('.sold_to').value;
     currentAccount = accountsDataBase.find(
-      acc => acc.soldTo === Number(companySoldTo.value)
+      acc => acc.soldTo === Number(currentSoldTo)
     );
   
     //Guard clause
@@ -14,7 +17,7 @@ export const loggingToAccount = function(accountsDataBase) {
       //Add informaction about wrong soldto
       wrongSoldTo.classList.remove('hidden');
       //delete input field
-      companySoldTo.value = '';
+      currentSoldTo.value = '';
       return;
     }
   

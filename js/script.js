@@ -4,7 +4,7 @@ import * as view from './view.js'
 import * as model from './model.js' 
 //ELEMENTS
 const btnLog = document.querySelector('.btn_log');
-const companySoldTo = document.querySelector('.sold_to');
+
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 const inputField = document.getElementById('mySearch');
 const helpTopicList = document.getElementById('myMenu');
