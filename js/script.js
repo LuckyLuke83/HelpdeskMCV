@@ -4,8 +4,6 @@ import * as view from './view.js'
 import * as model from './model.js' 
 //ELEMENTS
 const btnLog = document.querySelector('.btn_log');
-
-const wrongSoldTo = document.querySelector('.wrong_sold_to');
 const inputField = document.getElementById('mySearch');
 const helpTopicList = document.getElementById('myMenu');
 const helpSubject = helpTopicList.getElementsByTagName('li');
@@ -13,16 +11,6 @@ const searchBtn = document.querySelector('.search_btn');
 const accountSettings = document.querySelector('.nav_account_settings');
 const accountSettingsClose = document.querySelector('.closebtn');
 const logOut = document.querySelector('.log_out');
-
-//MODEL
-//Logging out
-logOut.addEventListener('click', function (e) {
-  e.preventDefault();
-  logged = false;
-  sessionStorage.setItem('ifLogged', logged);
-  // hidingApp();
-  // hiddingSettings();
-});
 
 //model
 class Customer {
@@ -65,8 +53,6 @@ const nav = document.querySelector('.nav');
 //All containers that are controled by buttons
 const sectionElements = document.querySelectorAll('.section');
 
-console.log(sectionElements);
-
 nav.addEventListener('click', function (e) {
   const clicked = e.target.closest('.nav_btn');
   
@@ -98,20 +84,25 @@ btnLog.addEventListener('click', function (e) {
 });
 
 // LOGGING TO SYSTEM (ENTER)
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter' && companySoldTo.value.length !== 0) {
-    model.loggingToAccount(accounts);
-    view.showingApp();
-  }
-});
+// document.addEventListener('keydown', function (e) {
+//   if (e.key === 'Enter' && companySoldTo.value.length !== 0) {
+//     model.loggingToAccount(accounts);
+//     view.showingApp();
+//   }
+// });
+
+//Logout from nav
+// logOut.addEventListener('click', model.loggingOut(view.hidingApp(), view.hiddingSettings()));
 
 //Opening account settings
 accountSettings.addEventListener('click', function () {
+  
   view.showingSettings(accountSettings);
 });
 
 //Closing accounts settings
 accountSettingsClose.addEventListener('click', function () {
+  
   view.hiddingSettings(accountSettings);
 });
 

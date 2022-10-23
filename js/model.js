@@ -2,6 +2,7 @@
 const helpTopics = document.querySelectorAll('.help_topic');
 let logged = sessionStorage.getItem('ifLogged');
 const companySoldTo = document.querySelector('.sold_to');
+const wrongSoldTo = document.querySelector('.wrong_sold_to');
 
 let currentAccount;
 let currentSoldTo;
@@ -26,6 +27,16 @@ export const loggingToAccount = function(accountsDataBase) {
     sessionStorage.setItem('client', JSON.stringify(currentAccount));
     companySoldTo.value = '';
   }
+
+
+
+// export const loggingOut = function (x, y) {
+//   // e.preventDefault();
+//   logged = false;
+//   sessionStorage.setItem('ifLogged', logged);
+//   x();
+//   y();
+// };
 
 //displaying Help topics in main section after clicking on topic
 export const displayHelpContent = function (e) {
