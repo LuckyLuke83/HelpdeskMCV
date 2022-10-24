@@ -30,13 +30,13 @@ export const loggingToAccount = function(accountsDataBase) {
 
 
 
-// export const loggingOut = function (x, y) {
-//   // e.preventDefault();
-//   logged = false;
-//   sessionStorage.setItem('ifLogged', logged);
-//   x();
-//   y();
-// };
+export const loggingOut = function (e, x, y) {
+  e.preventDefault();
+  logged = false;
+  sessionStorage.setItem('ifLogged', logged);
+  x();
+  y();
+};
 
 //displaying Help topics in main section after clicking on topic
 export const displayHelpContent = function (e) {

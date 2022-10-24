@@ -3,7 +3,7 @@ import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
 //ELEMENTS
-const btnLog = document.querySelector('.btn_log');
+
 const inputField = document.getElementById('mySearch');
 const helpTopicList = document.getElementById('myMenu');
 const helpSubject = helpTopicList.getElementsByTagName('li');
@@ -76,12 +76,11 @@ nav.addEventListener('click', function (e) {
 
 //PROPER CONTROLER DATA
 // LOGGING TO SYSTEM (Button)
-btnLog.addEventListener('click', function (e) {
-  e.preventDefault();
-  // Checking Sold to (if correct)
+
+const controlLogging = function() {
   model.loggingToAccount(accounts);
-  view.showingApp();
-});
+}
+
 
 // LOGGING TO SYSTEM (ENTER)
 // document.addEventListener('keydown', function (e) {
@@ -91,8 +90,8 @@ btnLog.addEventListener('click', function (e) {
 //   }
 // });
 
-//Logout from nav
-// logOut.addEventListener('click', model.loggingOut(view.hidingApp(), view.hiddingSettings()));
+
+
 
 //Opening account settings
 accountSettings.addEventListener('click', function () {
@@ -107,8 +106,14 @@ accountSettingsClose.addEventListener('click', function () {
 });
 
 
+
+
 // helpTopicList.addEventListener('click', model.displayHelpContent());
 // searchBtn.addEventListener('click', model.displaySearchContent())
+const init = function(){
+  view.checkLog();
+  view.logging(controlLogging)
 
+} 
 
-view.checkLog();
+init();
