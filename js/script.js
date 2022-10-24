@@ -7,10 +7,8 @@ import * as model from './model.js'
 const inputField = document.getElementById('mySearch');
 const helpTopicList = document.getElementById('myMenu');
 const helpSubject = helpTopicList.getElementsByTagName('li');
-const searchBtn = document.querySelector('.search_btn');
-const accountSettings = document.querySelector('.nav_account_settings');
-const accountSettingsClose = document.querySelector('.closebtn');
-const logOut = document.querySelector('.log_out');
+
+
 
 //model
 class Customer {
@@ -77,10 +75,13 @@ nav.addEventListener('click', function (e) {
 //PROPER CONTROLER DATA
 // LOGGING TO SYSTEM (Button)
 
-const controlLogging = function() {
+const controlLoggingIn = function() {
   model.loggingToAccount(accounts);
 }
 
+const controlLoggingOut = function() {
+  model.loggingOut;
+}
 
 // LOGGING TO SYSTEM (ENTER)
 // document.addEventListener('keydown', function (e) {
@@ -90,30 +91,12 @@ const controlLogging = function() {
 //   }
 // });
 
-
-
-
-//Opening account settings
-accountSettings.addEventListener('click', function () {
-  
-  view.showingSettings(accountSettings);
-});
-
-//Closing accounts settings
-accountSettingsClose.addEventListener('click', function () {
-  
-  view.hiddingSettings(accountSettings);
-});
-
-
-
-
 // helpTopicList.addEventListener('click', model.displayHelpContent());
 // searchBtn.addEventListener('click', model.displaySearchContent())
 const init = function(){
-  view.checkLog();
-  view.logging(controlLogging)
-
+  view.checkLog(model.logged);
+  view.logging(controlLoggingIn);
+  view.loggingOut(controlLoggingOut);
 } 
 
 init();

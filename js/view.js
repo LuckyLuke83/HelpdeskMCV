@@ -1,10 +1,11 @@
 'use script'
 const logWindow = document.querySelector('.log_window');
 const appWindow = document.querySelector('.main_container');
+const searchBtn = document.querySelector('.search_btn');
 const accountSettings = document.querySelector('.nav_account_settings');
+const accountSettingsClose = document.querySelector('.closebtn');
 const btnLog = document.querySelector('.btn_log');
-
-let logged = sessionStorage.getItem('ifLogged');
+const logOut = document.querySelector('.log_out');
 
 export const logging = function (handler) {
   btnLog.addEventListener('click', function (e) {
@@ -13,9 +14,26 @@ export const logging = function (handler) {
   handler();
 })};
 
-export const checkLog = function() {
-    logged = logged === 'true';
-    if (logged) {
+export const loggingOut = function () {
+  logOut.addEventListener('click', function() {
+    checkLog();
+  })
+  
+}
+
+//Opening account settings
+accountSettings.addEventListener('click', function () {
+  showingSettings(accountSettings);
+});
+
+//Closing accounts settings
+accountSettingsClose.addEventListener('click', function () {
+  hiddingSettings(accountSettings);
+});
+
+
+export const checkLog = function(loggedStatus) {
+    if (loggedStatus) {
       showingApp();
       return;
     } else {

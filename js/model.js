@@ -1,11 +1,12 @@
 'use strict'
 const helpTopics = document.querySelectorAll('.help_topic');
-let logged = sessionStorage.getItem('ifLogged');
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 
 let currentAccount;
 let currentSoldTo;
+
+export let logged = sessionStorage.getItem('ifLogged');
 
 export const loggingToAccount = function(accountsDataBase) {
     currentSoldTo = document.querySelector('.sold_to').value;
@@ -28,14 +29,9 @@ export const loggingToAccount = function(accountsDataBase) {
     companySoldTo.value = '';
   }
 
-
-
-export const loggingOut = function (e, x, y) {
-  e.preventDefault();
+export const loggingOut = function() {  
   logged = false;
   sessionStorage.setItem('ifLogged', logged);
-  x();
-  y();
 };
 
 //displaying Help topics in main section after clicking on topic
