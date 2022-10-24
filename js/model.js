@@ -1,7 +1,5 @@
 'use strict'
-const helpTopics = document.querySelectorAll('.help_topic');
-const helpTopicList = document.getElementById('myMenu');
-const helpSubject = helpTopicList.getElementsByTagName('li');
+
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 
@@ -75,28 +73,6 @@ export const displayHelpContent = function (e) {
       displayHelpContent();
   };
 
-// export const serchFilter =  function () {
-//     let filter, a;
-  
-//     // Displaying topic list
-//     helpTopicList.classList.remove('hidden');
-  
-//     //Hidding list when input field is empty
-//     if (inputField.value.length === 0) {
-//       helpTopicList.classList.add('hidden');
-//     }
-  
-//     filter = inputField.value.toUpperCase();
-  
-//     //Leaving only matching elements
-//     for (let i = 0; i < helpSubject.length; i++) {
-//       a = helpSubject[i].getElementsByTagName('a')[0];
-//       if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//         helpSubject[i].style.display = '';
-//       } else {
-//         helpSubject[i].style.display = 'none';
-//       }
-//     }
-//   }
+
 
 

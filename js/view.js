@@ -2,13 +2,18 @@
 const logWindow = document.querySelector('.log_window');
 const appWindow = document.querySelector('.main_container');
 const searchBtn = document.querySelector('.search_btn');
+const searchField = document.querySelector('.search_field');
 const accountSettings = document.querySelector('.nav_account_settings');
 const accountSettingsClose = document.querySelector('.closebtn');
 const btnLog = document.querySelector('.btn_log');
 const logOut = document.querySelector('.log_out');
 const navButtons = document.querySelectorAll('.nav_btn'); //Wszystkie Przyciski 
 const nav = document.querySelector('.nav'); //Div with all buttons
-const sectionElements = document.querySelectorAll('.section'); //All containers that are controled by buttons
+const sectionElements = document.querySelectorAll('.section');
+const helpTopics = document.querySelectorAll('.help_topic');
+const helpTopicList = document.getElementById('myMenu');
+const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
+const inputField = document.getElementById('mySearch');
 
 export const logging = function (handler) {
   btnLog.addEventListener('click', function (e) {
@@ -21,6 +26,34 @@ export const loggingOut = function () {
   logOut.addEventListener('click', function() {
     checkLog();
   })
+}
+
+export const searchBarActivation = function () {
+  ['focus', 'keyup'].forEach(ev => searchField.addEventListener(ev, serchFilter));
+}
+
+function serchFilter() {
+  let filter, a;
+
+  // Displaying topic list
+  helpTopicList.classList.remove('hidden');
+
+  //Hidding list when input field is empty
+  // if (inputField.value.length === 0) {
+  //   helpTopicList.classList.add('hidden');
+  // }
+
+  filter = inputField.value.toUpperCase();
+
+  //Leaving only matching elements
+  for (let i = 0; i < helpSubject.length; i++) {
+    a = helpSubject[i].getElementsByTagName('a')[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      helpSubject[i].style.display = '';
+    } else {
+      helpSubject[i].style.display = 'none';
+    }
+  }
 }
 
 //Nav manipulation
@@ -92,5 +125,3 @@ export const showingApp = function() {
     // Displaying main page
     appWindow.classList.remove('hidden');
   }
-
-  

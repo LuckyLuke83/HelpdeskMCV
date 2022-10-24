@@ -3,7 +3,7 @@ import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
 //ELEMENTS
-const inputField = document.getElementById('mySearch');
+
 
 //model
 class Customer {
@@ -31,7 +31,7 @@ function displayingHelpTopic() {
 
   //clearing searchbar
   inputField.value = '';
-  
+
   //hidding help topics list
   helpTopicList.classList.add('hidden');
 }
@@ -62,6 +62,7 @@ const init = function(){
   view.logging(controlLoggingIn);
   view.loggingOut(controlLoggingOut);
   view.navButtonsMenu();
+  view.searchBarActivation();
 } 
 
 init();
