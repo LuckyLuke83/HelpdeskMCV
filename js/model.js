@@ -1,5 +1,7 @@
 'use strict'
 const helpTopics = document.querySelectorAll('.help_topic');
+const helpTopicList = document.getElementById('myMenu');
+const helpSubject = helpTopicList.getElementsByTagName('li');
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 
@@ -44,7 +46,6 @@ export const displayHelpContent = function (e) {
   
     //hidding help topics list
     helpTopicList.classList.add('hidden');
-  
     //clearing searchbar
     inputField.value = '';
   

@@ -3,12 +3,7 @@ import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
 //ELEMENTS
-
 const inputField = document.getElementById('mySearch');
-const helpTopicList = document.getElementById('myMenu');
-const helpSubject = helpTopicList.getElementsByTagName('li');
-
-
 
 //model
 class Customer {
@@ -36,41 +31,10 @@ function displayingHelpTopic() {
 
   //clearing searchbar
   inputField.value = '';
+  
   //hidding help topics list
   helpTopicList.classList.add('hidden');
 }
-//VIEW
-//nav buttons logic
-
-//Wszystkie Przyciski 
-const navButtons = document.querySelectorAll('.nav_btn');
-
-//Div with all buttons
-const nav = document.querySelector('.nav');
-
-//All containers that are controled by buttons
-const sectionElements = document.querySelectorAll('.section');
-
-nav.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.nav_btn');
-  
-  // Guard clause
-  if (!clicked) return;
-
-  // Remove active classes
-  navButtons.forEach(btn => btn.classList.remove('nav_btn_active'))
-
-  //adding hidden class to section elements
-  sectionElements.forEach(section => section.classList.add('hidden'));
-
-  //Activate nav button
-  clicked.classList.add('nav_btn_active');
-
-  // // Activate content area
-  document
-    .querySelector(`.section-${clicked.dataset.tab}`)
-    .classList.remove('hidden');
-});
 
 //PROPER CONTROLER DATA
 // LOGGING TO SYSTEM (Button)
@@ -97,6 +61,7 @@ const init = function(){
   view.checkLog(model.logged);
   view.logging(controlLoggingIn);
   view.loggingOut(controlLoggingOut);
+  view.navButtonsMenu();
 } 
 
 init();
