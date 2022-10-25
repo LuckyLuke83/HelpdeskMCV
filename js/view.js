@@ -39,9 +39,9 @@ function serchFilter() {
   helpTopicList.classList.remove('hidden');
 
   //Hidding list when input field is empty
-  // if (inputField.value.length === 0) {
-  //   helpTopicList.classList.add('hidden');
-  // }
+  if (inputField.value.length === 0) {
+    helpTopicList.classList.add('hidden');
+  }
 
   filter = inputField.value.toUpperCase();
 

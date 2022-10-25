@@ -1,2 +1,5 @@
 
 add focus out to search bar
+add displaying subjects in main window
+generate helptopic list base on articleList
+redesign help topics and move them to separate file
