@@ -11,7 +11,8 @@ const navButtons = document.querySelectorAll('.nav_btn'); //Wszystkie Przyciski
 const nav = document.querySelector('.nav'); //Div with all buttons
 const sectionElements = document.querySelectorAll('.section');
 const helpTopics = document.querySelectorAll('.help_topic');
-const helpTopicList = document.getElementById('myMenu');
+// const helpTopicList = document.getElementById('myMenu');
+const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
 const inputField = document.getElementById('mySearch');
 
@@ -55,6 +56,13 @@ function serchFilter() {
     }
   }
 }
+
+//Creating help topic list
+export const helpList = function(arr) {
+ const markup = arr.map(el => `<li><a class="help_topic_li" href="#">${el}</a></li>`).join('');
+ helpTopicList.insertAdjacentHTML('afterbegin', markup);
+}
+
 
 //Nav manipulation
 export const navButtonsMenu = function() {

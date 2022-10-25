@@ -2,11 +2,9 @@
 import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
-import * as articles from './'
-//ELEMENTS
+import {articleList} from './articlesDatabase.js'
 
 
-//model
 class Customer {
   constructor(company, sold, soft) {
     this.company = company;
@@ -38,8 +36,14 @@ function displayingHelpTopic() {
 }
 
 //PROPER CONTROLER DATA
-// LOGGING TO SYSTEM (Button)
+//
+const helpTopicList = function () {
+  const topicList = articleList.map( el => (el.name))
+  return topicList;
+}
 
+
+// LOGGING TO SYSTEM (Button)
 const controlLoggingIn = function() {
   model.loggingToAccount(accounts);
 }
@@ -64,6 +68,7 @@ const init = function(){
   view.loggingOut(controlLoggingOut);
   view.navButtonsMenu();
   view.searchBarActivation();
+  view.helpList(helpTopicList());
 } 
 
 init();
