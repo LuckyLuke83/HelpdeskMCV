@@ -14,6 +14,7 @@ const helpTopics = document.querySelectorAll('.help_topic');
 // const helpTopicList = document.getElementById('myMenu');
 const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
+const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 
 export const logging = function (handler) {
@@ -63,6 +64,25 @@ export const helpList = function(arr) {
  helpTopicList.insertAdjacentHTML('afterbegin', markup);
 }
 
+export const displayHelpTopic = function(arr) {
+  helpTopicList.addEventListener('click', function(e) {
+    const clicked = e.target.closest('.help_topic_li').innerHTML;
+    
+    const article = arr.find(el => el.name === clicked);
+
+    searchField.value = '';
+    helpTopicList.classList.add('hidden');
+
+    const markup = `<div class="help_topic">
+    <h2>${article.title}</h2>
+    <p>${article.content}</p>
+  </div>`
+
+  articleArea.innerHTML ='';
+
+  articleArea.insertAdjacentHTML('afterbegin', markup);
+  })
+}
 
 //Nav manipulation
 export const navButtonsMenu = function() {

@@ -63,12 +63,14 @@ const controlLoggingOut = function() {
 // helpTopicList.addEventListener('click', model.displayHelpContent());
 // searchBtn.addEventListener('click', model.displaySearchContent())
 const init = function(){
+  view.helpList(helpTopicList());
   view.checkLog(model.logged);
   view.logging(controlLoggingIn);
   view.loggingOut(controlLoggingOut);
   view.navButtonsMenu();
   view.searchBarActivation();
-  view.helpList(helpTopicList());
+  view.displayHelpTopic(articleList);
+  
 } 
 
 init();
