@@ -2,42 +2,42 @@
 
 export const articleList = [
     {
-        name: 'Licencja domowa',
+        name: 'licencja domowa',
         title: 'Jak wygenerować licencję domową Solid Edge',
         content: 'W tym artykule dowiesz się jak uruchomić licencję domową Solid Edge'
     },
     {
-        name: 'Przeniesienie licencji na inny komputer',
+        name: 'przeniesienie licencji na inny komputer',
         title: 'Jak zainstalować Solid Edge',
         content: 'W tym artykule dowiesz się jak uruchomić licencję domową Solid Edge'  
     },
     {
-        name: 'Instalacja Solid Edge',
+        name: 'instalacja solid edge',
         title: 'Jak zainstalować Solid Edge',
         content: 'W tym artykule dowiesz się jak zainstalować Solid Edge 2022.'  
     },
     {
-        name: 'Konfiguracja Solid Edge',
+        name: 'konfiguracja solid edge',
         title: 'Jak prawidłowo skonfigurować Solid Edge',
         content: 'W tym artykule dowiesz się jak poprawnie skonfigurować Solid Edge 2022.'  
     },
     {
-        name: 'Instalacja Standard Parts',
+        name: 'instalacja standard parts',
         title: 'Jak zainstalować moduł Standard Parts',
         content: 'W tym artykule dowiesz się jak zainstalować dodatek Standard Parts.'  
     },
     {
-        name: 'Instalacja polskich czcionek',
+        name: 'instalacja polskich czcionek',
         title: 'Jak zainstalować polskie czcionki',
         content: 'W tym artykule dowiesz się jak zainstalować polskie czcionki do Solid Edge.'  
     },
     {
-        name: 'Resetowanie ustawień Solid Edge',
+        name: 'resetowanie ustawień solid edge',
         title: 'Jak zresetować ustawienia Solid Edge',
         content: 'W tym artykule dowiesz się jak zresetować ustawienia Solid Edge.'  
     },
     {
-        name: 'Aktywacja licencji Solid Edge',
+        name: 'aktywacja licencji solid edge',
         title: 'Jak aktywować nową licencję Solid Edge',
         content: 'W tym artykule dowiesz się jak aktywować nową licencję Solid Edge.'  
     },

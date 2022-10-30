@@ -70,7 +70,7 @@ const init = function(){
   view.navButtonsMenu();
   view.searchBarActivation();
   view.displayHelpTopic(articleList);
-  
+  view.searchButton(articleList);
 } 
 
 init();

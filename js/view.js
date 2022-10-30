@@ -30,11 +30,13 @@ export const loggingOut = function () {
   })
 }
 
+
 export const searchBarActivation = function () {
   ['focus', 'keyup'].forEach(ev => searchField.addEventListener(ev, serchFilter));
 }
 
 function serchFilter() {
+  console.log()
   let filter, a;
 
   // Displaying topic list
@@ -64,6 +66,32 @@ export const helpList = function(arr) {
  helpTopicList.insertAdjacentHTML('afterbegin', markup);
 }
 
+export const searchButton = function(articleDB) {
+  searchBtn.addEventListener('click', function() {
+    const inputPhrase = searchField.value.toLowerCase();
+    
+    const matchedArticle = articleDB.find(el => el.name === inputPhrase);
+    
+    if (!matchedArticle) {
+      console.log('error');
+      return;
+    }
+    
+    searchField.value = '';
+    helpTopicList.classList.add('hidden');
+
+    const markup = `<div class="help_topic">
+    <h2>${matchedArticle.title}</h2>
+    <p>${matchedArticle.content}</p>
+  </div>`
+
+  articleArea.innerHTML ='';
+
+  articleArea.insertAdjacentHTML('afterbegin', markup);
+  })
+}
+
+//displaying topic article
 export const displayHelpTopic = function(arr) {
   helpTopicList.addEventListener('click', function(e) {
     const clicked = e.target.closest('.help_topic_li').innerHTML;
