@@ -66,18 +66,14 @@ export const helpList = function(arr) {
  helpTopicList.insertAdjacentHTML('afterbegin', markup);
 }
 
-export const searchButton = function(articleDB) {
-  searchBtn.addEventListener('click', function() {
-    const inputPhrase = searchField.value.toLowerCase();
-    
-    const matchedArticle = articleDB.find(el => el.name === inputPhrase);
-    
+const displayingHelpArtice = function(articleDB, inputPhrase) {
+  const matchedArticle = articleDB.find(el => el.name === inputPhrase);
     if (!matchedArticle) {
       console.log('error');
       return;
     }
-    
-    searchField.value = '';
+  
+  searchField.value = '';
     helpTopicList.classList.add('hidden');
 
     const markup = `<div class="help_topic">
@@ -88,27 +84,23 @@ export const searchButton = function(articleDB) {
   articleArea.innerHTML ='';
 
   articleArea.insertAdjacentHTML('afterbegin', markup);
+  }
+
+export const searchButton = function(articleDB) {
+  searchBtn.addEventListener('click', function() {
+    const inputPhrase = searchField.value.toLowerCase();
+    displayingHelpArtice(articleDB, inputPhrase);
+  
   })
 }
 
 //displaying topic article
-export const displayHelpTopic = function(arr) {
+export const displayHelpTopic = function(articleDB) {
   helpTopicList.addEventListener('click', function(e) {
     const clicked = e.target.closest('.help_topic_li').innerHTML;
-    
-    const article = arr.find(el => el.name === clicked);
+  
+    displayingHelpArtice(articleDB, clicked);
 
-    searchField.value = '';
-    helpTopicList.classList.add('hidden');
-
-    const markup = `<div class="help_topic">
-    <h2>${article.title}</h2>
-    <p>${article.content}</p>
-  </div>`
-
-  articleArea.innerHTML ='';
-
-  articleArea.insertAdjacentHTML('afterbegin', markup);
   })
 }
 
