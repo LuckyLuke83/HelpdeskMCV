@@ -23,18 +23,6 @@ class Customer {
   }
 }
 
-//view
-function displayingHelpTopic() {
-  //showing article
-  document.querySelector(`.${this.initials}`).classList.remove('hidden');
-
-  //clearing searchbar
-  inputField.value = '';
-
-  //hidding help topics list
-  helpTopicList.classList.add('hidden');
-}
-
 //PROPER CONTROLER DATA
 //
 const helpTopicList = function () {
@@ -45,7 +33,7 @@ const helpTopicList = function () {
 
 // LOGGING TO SYSTEM (Button)
 const controlLoggingIn = function() {
-  model.loggingToAccount(accounts);
+  model.loggingToAccount(accounts, view.showingApp);
 }
 
 const controlLoggingOut = function() {
@@ -63,10 +51,11 @@ const controlLoggingOut = function() {
 // helpTopicList.addEventListener('click', model.displayHelpContent());
 // searchBtn.addEventListener('click', model.displaySearchContent())
 const init = function(){
-  view.helpList(helpTopicList());
   view.checkLog(model.logged);
   view.logging(controlLoggingIn);
   view.loggingOut(controlLoggingOut);
+  //start after logging in??
+  view.helpList(helpTopicList());
   view.navButtonsMenu();
   view.searchBarActivation();
   view.displayHelpTopic(articleList);

@@ -8,25 +8,27 @@ let currentSoldTo;
 
 export let logged = sessionStorage.getItem('ifLogged');
 
-export const loggingToAccount = function(accountsDataBase) {
+export const loggingToAccount = function(accountsDataBase, handlerlogging) {
     currentSoldTo = document.querySelector('.sold_to').value;
+    
     currentAccount = accountsDataBase.find(
       acc => acc.soldTo === Number(currentSoldTo)
     );
-  
+    console.log(currentAccount);
     //Guard clause
     if (!currentAccount) {
       //Add informaction about wrong soldto
       wrongSoldTo.classList.remove('hidden');
       //delete input field
-      currentSoldTo.value = '';
+      companySoldTo.value = '';
       return;
     }
-  
+    wrongSoldTo.classList.add('hidden');
     logged = true;
     sessionStorage.setItem('ifLogged', logged);
     sessionStorage.setItem('client', JSON.stringify(currentAccount));
     companySoldTo.value = '';
+    handlerlogging();
   }
 
 export const loggingOut = function() {  

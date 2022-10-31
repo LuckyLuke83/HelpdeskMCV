@@ -17,10 +17,20 @@ const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers t
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 
+export const checkLog = function(loggedStatus) {
+  if (loggedStatus) {
+    showingApp();
+    // return;
+  } else {
+    hidingApp();
+    hiddingSettings();
+  }
+}
+
 export const logging = function (handler) {
   btnLog.addEventListener('click', function (e) {
   e.preventDefault();
-  showingApp();
+  // showingApp();
   handler();
 })};
 
@@ -100,7 +110,6 @@ export const displayHelpTopic = function(articleDB) {
     const clicked = e.target.closest('.help_topic_li').innerHTML;
   
     displayingHelpArtice(articleDB, clicked);
-
   })
 }
 
@@ -140,15 +149,7 @@ accountSettingsClose.addEventListener('click', function () {
 });
 
 
-export const checkLog = function(loggedStatus) {
-    if (loggedStatus) {
-      showingApp();
-      return;
-    } else {
-      hidingApp();
-      hiddingSettings();
-    }
-  }
+
 
 export const hidingApp = function() {
     // Displaying Login box
