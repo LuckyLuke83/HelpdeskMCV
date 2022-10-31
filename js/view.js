@@ -151,26 +151,41 @@ accountSettingsClose.addEventListener('click', function () {
 
 
 
-export const hidingApp = function() {
+const hidingApp = function() {
     // Displaying Login box
     logWindow.classList.remove('hidden');
     // Hiding main page
     appWindow.classList.add('hidden');
   }
 
-export const showingSettings = function() {
+const showingSettings = function() {
     document.getElementById('mySidenav').style.width = '250px';
     accountSettings.style.color = '#2b2b2b';
   }
 
-export const hiddingSettings = function() {
+const hiddingSettings = function() {
     document.getElementById('mySidenav').style.width = '0';
     accountSettings.style.color = '#fafafa';
   }
 
-export const showingApp = function() {
+export const showingApp = function(fetchedAccount) {
     // Hiding Login box
     logWindow.classList.add('hidden');
     // Displaying main page
     appWindow.classList.remove('hidden');
+
+    //guard clause for checkLog() function
+    if (!fetchedAccount) return;
+    generatingDownloadSoft(fetchedAccount)
   }
+
+const generatingDownloadSoft = function (currentAccount) {
+const account = currentAccount
+  // console.log(account.soft);
+  //creating markup 
+  let markup = ``
+
+
+// account.soft.forEach(el=> );
+
+}

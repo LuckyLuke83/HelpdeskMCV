@@ -1,5 +1,4 @@
 'use strict'
-
 const companySoldTo = document.querySelector('.sold_to');
 const wrongSoldTo = document.querySelector('.wrong_sold_to');
 
@@ -14,7 +13,7 @@ export const loggingToAccount = function(accountsDataBase, handlerlogging) {
     currentAccount = accountsDataBase.find(
       acc => acc.soldTo === Number(currentSoldTo)
     );
-    console.log(currentAccount);
+    
     //Guard clause
     if (!currentAccount) {
       //Add informaction about wrong soldto
@@ -28,7 +27,7 @@ export const loggingToAccount = function(accountsDataBase, handlerlogging) {
     sessionStorage.setItem('ifLogged', logged);
     sessionStorage.setItem('client', JSON.stringify(currentAccount));
     companySoldTo.value = '';
-    handlerlogging();
+    handlerlogging(currentAccount);
   }
 
 export const loggingOut = function() {  

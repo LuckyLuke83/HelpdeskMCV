@@ -31,6 +31,7 @@ const helpTopicList = function () {
 }
 
 
+
 // LOGGING TO SYSTEM (Button)
 const controlLoggingIn = function() {
   model.loggingToAccount(accounts, view.showingApp);
