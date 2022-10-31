@@ -16,6 +16,7 @@ const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
+const downloadSection = document.querySelector('.section-2')
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {
@@ -183,9 +184,81 @@ const generatingDownloadSoft = function (currentAccount) {
 const account = currentAccount
   // console.log(account.soft);
   //creating markup 
-  let markup = ``
+  let markup = `<main>
+  ${account.soft.map(el=> `<div class="main_section ${el}">
+  <p class="soft_name">${(el === 'SE') ? 'SOLID EDGE' : el}</p>
+  <div class="soft_section new_soft">
+    <ul class="soft_ul">
+      <li>2022</li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 1</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- instrukcje instalacji</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 2</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>${(el === "SE") ? 'SOLID EDGE' : el}</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 3</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- Standard Parts</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Patch</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- Uaktualnienie</p>
+      </li>
+    </ul>
+  </div>
+  <div class="soft_section old_soft">
+    <ul class="soft_ul">
+      <li>2021</li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 1</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- instrukcje instalacji</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 2</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>${(el === "SE") ? 'SOLID EDGE' : el}</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Dysk 3</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- Standard Parts</p>
+      </li>
+      <li class="soft_li">
+        <a href="#" class="soft_btn"
+          ><p>Patch</p>
+          <i class="fa-solid fa-download fa-xs"></i
+        ></a>
+        <p>- Uaktualnienie</p>
+      </li>
+    </ul>
+  </div>
+</div>`).join('')}
+  </main>`
 
+  downloadSection.innerHTML ='';
 
+  downloadSection.insertAdjacentHTML('afterbegin', markup);
 // account.soft.forEach(el=> );
 
 }
