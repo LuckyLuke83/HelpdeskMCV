@@ -14,7 +14,7 @@ export const accounts = [
   {
     company: 'Triggo',
     soldTo: 3333,
-    soft: ['NX'],
+    soft: ['NX', 'Femap'],
   }
 ]
 

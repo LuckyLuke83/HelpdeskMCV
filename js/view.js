@@ -17,6 +17,8 @@ const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers t
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
+const softDropdown = document.querySelector('.software');
+const softVersion = document.querySelectorAll('.soft_version');
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {
@@ -182,9 +184,9 @@ export const showingApp = function(fetchedAccount) {
 
 const generatingDownloadSoft = function (currentAccount) {
 const account = currentAccount
-  // console.log(account.soft);
-  //creating markup 
-  let markup = `<main>
+  
+  //creating markup for Download section
+  const markupDownload = `<main>
   ${account.soft.map(el=> `<div class="main_section ${el}">
   <p class="soft_name">${(el === 'SE') ? 'SOLID EDGE' : el}</p>
   <div class="soft_section new_soft">
@@ -258,12 +260,19 @@ const account = currentAccount
 
   downloadSection.innerHTML ='';
 
-  downloadSection.insertAdjacentHTML('afterbegin', markup);
+  downloadSection.insertAdjacentHTML('afterbegin', markupDownload);
+
+  //Adding content for ticket section
+  // <option value="SE">SE</option>
+  const markupTicket = `<option value="">Wybierze oprogramowania</option>${account.soft.map(el => `<option value="${el}">${el}</option>`).join('')}`;
+
+  softDropdown.innerHTML ='';
+  softDropdown.insertAdjacentHTML('afterbegin', markupTicket);
+
 }
 
 //Elements
-const softDropdown = document.querySelector('.software');
-const softVersion = document.querySelectorAll('.soft_version');
+
 
 export const formSoftware = function() {
   softDropdown.addEventListener('change', function () {
