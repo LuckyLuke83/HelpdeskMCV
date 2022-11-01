@@ -261,14 +261,17 @@ const account = currentAccount
   downloadSection.insertAdjacentHTML('afterbegin', markup);
 }
 
+//Elements
 const softDropdown = document.querySelector('.software');
 const softVersion = document.querySelectorAll('.soft_version');
 
 export const formSoftware = function() {
   softDropdown.addEventListener('change', function () {
     const softName = softDropdown.value;
-    if (softName.length === 0) return;
-
+    if (softName.length === 0) {
+      softVersion.forEach(el => el.classList.add('hidden'));
+      return;
+    }
     softVersion.forEach(el => el.classList.add('hidden'));
     document.getElementsByClassName(`soft_version ${softName}`)[0].classList.remove('hidden');
   });
