@@ -61,6 +61,7 @@ const init = function(){
   view.searchBarActivation();
   view.displayHelpTopic(articleList);
   view.searchButton(articleList);
+  view.formSoftware();
 } 
 
 init();

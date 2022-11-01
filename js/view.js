@@ -16,7 +16,7 @@ const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
-const downloadSection = document.querySelector('.section-2')
+const downloadSection = document.querySelector('.section-2');
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {
@@ -259,6 +259,17 @@ const account = currentAccount
   downloadSection.innerHTML ='';
 
   downloadSection.insertAdjacentHTML('afterbegin', markup);
-// account.soft.forEach(el=> );
+}
 
+const softDropdown = document.querySelector('.software');
+const softVersion = document.querySelectorAll('.soft_version');
+
+export const formSoftware = function() {
+  softDropdown.addEventListener('change', function () {
+    const softName = softDropdown.value;
+    if (softName.length === 0) return;
+
+    softVersion.forEach(el => el.classList.add('hidden'));
+    document.getElementsByClassName(`soft_version ${softName}`)[0].classList.remove('hidden');
+  });
 }
