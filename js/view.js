@@ -20,7 +20,7 @@ const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
-const softVersion = document.querySelectorAll('.soft_version');
+
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {
@@ -268,7 +268,7 @@ const account = currentAccount
   const SEversionMarkup = `<select
   id="soft_version"
   name="soft_version"
-  class="soft_version hidden SE">
+  class="soft_version hidden SEsoft">
   <option value="">Wersja</option>
   ${supportedSoft.SE.map(ver => `<option value="${ver}">${ver}</option>`).join('')}
   </select>`
@@ -276,14 +276,11 @@ const account = currentAccount
   const NXversionMarkup = `<select
   id="soft_version"
   name="soft_version"
-  class="soft_version hidden NX">
+  class="soft_version hidden NXsoft">
   <option value="">Wersja</option>
   ${supportedSoft.NX.map(ver => `<option value="${ver}">${ver}</option>`).join('')}
   </select>`
- 
-  // const markupSoftVersions = account.soft.map(el => `<select id="soft_version" name="soft_version" class="soft_version hidden ${el}">
-  // </select>`).join('');
-  
+   
   const markupTicket = `<select id="software" name="software" class="software"><option value="">Wybierze oprogramowania</option>${account.soft.map(el => `<option value="${el}">${el}</option>`).join('')}</select>${account.soft.map(el => el === 'SE' ? SEversionMarkup : NXversionMarkup).join('')}`;
   
 
@@ -293,16 +290,18 @@ const account = currentAccount
 }
 
 //Elements
-
-
 export const formSoftware = function() {
+  
   softDropdown.addEventListener('change', function () {
-    const softName = softDropdown.value;
+    const softType = document.querySelector('.software')
+    const softVersion = document.querySelectorAll('.soft_version');
+    
+    const softName = softType.value;
     if (softName.length === 0) {
       softVersion.forEach(el => el.classList.add('hidden'));
       return;
     }
     softVersion.forEach(el => el.classList.add('hidden'));
-    document.getElementsByClassName(`soft_version ${softName}`)[0].classList.remove('hidden');
-  });
+    document.querySelector(`.${softName}soft`).classList.remove('hidden');
+   });
 }
