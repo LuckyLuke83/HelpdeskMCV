@@ -1,4 +1,6 @@
 'use script'
+import { supportedSoft } from './config.js';
+ 
 const logWindow = document.querySelector('.log_window');
 const appWindow = document.querySelector('.main_container');
 const searchBtn = document.querySelector('.search_btn');
@@ -17,7 +19,7 @@ const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers t
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
-const softDropdown = document.querySelector('.software');
+const softDropdown = document.querySelector('.software_row');
 const softVersion = document.querySelectorAll('.soft_version');
 
 export const checkLog = function(loggedStatus) {
@@ -263,12 +265,31 @@ const account = currentAccount
   downloadSection.insertAdjacentHTML('afterbegin', markupDownload);
 
   //Adding content for ticket section
-  // <option value="SE">SE</option>
-  const markupTicket = `<option value="">Wybierze oprogramowania</option>${account.soft.map(el => `<option value="${el}">${el}</option>`).join('')}`;
+  const SEversionMarkup = `<select
+  id="soft_version"
+  name="soft_version"
+  class="soft_version hidden SE">
+  <option value="">Wersja</option>
+  ${supportedSoft.SE.map(ver => `<option value="${ver}">${ver}</option>`).join('')}
+  </select>`
+
+  const NXversionMarkup = `<select
+  id="soft_version"
+  name="soft_version"
+  class="soft_version hidden NX">
+  <option value="">Wersja</option>
+  ${supportedSoft.NX.map(ver => `<option value="${ver}">${ver}</option>`).join('')}
+  </select>`
+ 
+  // const markupSoftVersions = account.soft.map(el => `<select id="soft_version" name="soft_version" class="soft_version hidden ${el}">
+  // </select>`).join('');
+  
+  const markupTicket = `<select id="software" name="software" class="software"><option value="">Wybierze oprogramowania</option>${account.soft.map(el => `<option value="${el}">${el}</option>`).join('')}</select>${account.soft.map(el => el === 'SE' ? SEversionMarkup : NXversionMarkup).join('')}`;
+  
+
 
   softDropdown.innerHTML ='';
   softDropdown.insertAdjacentHTML('afterbegin', markupTicket);
-
 }
 
 //Elements
