@@ -13,7 +13,6 @@ const navButtons = document.querySelectorAll('.nav_btn'); //Wszystkie Przyciski
 const nav = document.querySelector('.nav'); //Div with all buttons
 const sectionElements = document.querySelectorAll('.section');
 const helpTopics = document.querySelectorAll('.help_topic');
-// const helpTopicList = document.getElementById('myMenu');
 const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
 const articleArea = document.querySelector('.article_area')
@@ -41,6 +40,9 @@ export const logging = function (handler) {
 
 export const loggingOut = function () {
   logOut.addEventListener('click', function() {
+    //deactivating nav btn's
+    navButtons.forEach(btn => btn.classList.remove('nav_btn_active'));
+    document.querySelector('.nav_start').classList.add('nav_btn_active');
     checkLog();
   })
 }
