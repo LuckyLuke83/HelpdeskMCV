@@ -51,7 +51,8 @@ const controlLoggingOut = function() {
 
 const init = function(){
   view.checkLog(model.logged);
-  view.logging(controlLoggingIn);
+  view.loggingBtn(controlLoggingIn);
+  view.loggingEnter(controlLoggingIn);
   view.loggingOut(controlLoggingOut);
   //start after logging in??
   view.helpList(helpTopicList());

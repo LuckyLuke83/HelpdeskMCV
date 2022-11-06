@@ -12,13 +12,13 @@ const logOut = document.querySelector('.log_out');
 const navButtons = document.querySelectorAll('.nav_btn'); //Wszystkie Przyciski 
 const nav = document.querySelector('.nav'); //Div with all buttons
 const sectionElements = document.querySelectorAll('.section');
-const helpTopics = document.querySelectorAll('.help_topic');
 const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
 const articleArea = document.querySelector('.article_area')
 const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
+const soldTo = document.querySelector('.sold_to');
 
 
 export const checkLog = function(loggedStatus) {
@@ -31,12 +31,20 @@ export const checkLog = function(loggedStatus) {
   }
 }
 
-export const logging = function (handler) {
+export const loggingBtn = function (handler) {
   btnLog.addEventListener('click', function (e) {
   e.preventDefault();
   // showingApp();
   handler();
 })};
+
+export const loggingEnter = function(handler) {
+  soldTo.addEventListener("keydown", function (e){
+    if (e.key === "Enter") {
+      handler();
+    }
+  })
+}
 
 export const loggingOut = function () {
   logOut.addEventListener('click', function() {
@@ -121,9 +129,10 @@ export const displayHelpTopic = function(articleDB) {
 }
 
 //Nav manipulation
-export const navButtonsMenu = function() {
+
+export const navButtonsMenu = function(btn = '.nav_btn') {
   nav.addEventListener('click', function (e) {
-    const clicked = e.target.closest('.nav_btn');
+    const clicked = e.target.closest(`${btn}`);
     
     // Guard clause
     if (!clicked) return;
@@ -143,7 +152,6 @@ export const navButtonsMenu = function() {
       .classList.remove('hidden');
   });
 }
-
 
 //Opening account settings
 accountSettings.addEventListener('click', function () {
