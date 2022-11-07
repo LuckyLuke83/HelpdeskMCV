@@ -11,6 +11,7 @@ const removeSoft = document.querySelector('.remove_soft');
 const addClientBtn = document.querySelector('.add_client_btn');
 
 class Customer {
+    
     constructor(company, sold, soft) {
       this.company = company;
       this.soldTo = sold;
@@ -23,9 +24,45 @@ class Customer {
       return this;
     }
   
-    removeSoft(val) {
-      //wymyślić usuwanie
+    //Adding removing software logic
+    addSoftwareHandler () {
+        addSoft.addEventListener('click', function () {
+            const software = `${document.querySelector('#software').value} `;
+            document
+            .querySelector('.soft_added')
+            .insertAdjacentHTML('beforeend', software);
+        });
     }
+    
+    removeSoftwareHandler () {
+        removeSoft.addEventListener('click', function () {
+            document.querySelector('.soft_added').innerHTML = '';
+        });
+    }
+
+  //Adding new client
+    addingClient() {
+        addClientBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const company = document.querySelector('.company').value;
+        const soldTo = Number(document.querySelector('.sold_to_value').value);
+        // const soft = document.querySelector('.soft_added').innerHTML.slice(0, -1);
+    
+        const softArray = document
+        .querySelector('.soft_added')
+        .innerHTML.slice(0, -1)
+        .split(' ');
+    
+        const newCustomer = new Customer(company, soldTo, softArray);
+        accounts.push(newCustomer);
+    
+        //Clearing values
+        document.querySelector('.company').value = '';
+        document.querySelector('.sold_to_value').value = '';
+        document.querySelector('.soft_added').innerHTML = '';
+    })};
+
+    
   }
 
 export const optionsTabControl = function () {
@@ -75,46 +112,5 @@ export const optionsTabControl = function () {
     clientList.insertAdjacentHTML('afterbegin', html);
   };
 
-//Adding removing software logic
-addSoft.addEventListener('click', function () {
-    const software = `${document.querySelector('#software').value} `;
-    document
-      .querySelector('.soft_added')
-      .insertAdjacentHTML('beforeend', software);
-  });
-  
-  removeSoft.addEventListener('click', function () {
-    removingSoft();
-  });
-
-  //Adding new client
-export const addingClient = function() {
-    addClientBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    const company = document.querySelector('.company').value;
-    const soldTo = Number(document.querySelector('.sold_to_value').value);
-    // const soft = document.querySelector('.soft_added').innerHTML.slice(0, -1);
-  
-    const softArray = document
-      .querySelector('.soft_added')
-      .innerHTML.slice(0, -1)
-      .split(' ');
-  
-    const newCustomer = new Customer(company, soldTo, softArray);
-    accounts.push(newCustomer);
-  
-    console.log(accounts);
-
-    //Deleting values
-    document.querySelector('.company').value = document.querySelector(
-      '.sold_to_value'
-    ).value = '';
-    removingSoft();
-
-
-  })};
-
-function removingSoft () {
-    document.querySelector('.soft_added').innerHTML = '';
-  };
+  export default new Customer();
 
