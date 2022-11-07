@@ -4,34 +4,6 @@ import * as view from './view.js'
 import * as model from './model.js' 
 import {articleList} from './articlesDatabase.js'
 
-
-class Customer {
-  constructor(company, sold, soft) {
-    this.company = company;
-    this.soldTo = sold;
-    //soft dodawany z formularza poprzez push do array
-    this.soft = soft;
-  }
-
-  addSoft(val) {
-    this.soft.push(val);
-    return this;
-  }
-
-  removeSoft(val) {
-    //wymyślić usuwanie
-  }
-}
-
-//PROPER CONTROLER DATA
-//
-const helpTopicList = function () {
-  const topicList = articleList.map( el => (el.name))
-  return topicList;
-}
-
-
-
 // LOGGING TO SYSTEM (Button)
 const controlLoggingIn = function() {
   model.loggingToAccount(accounts, view.showingApp);
