@@ -41,14 +41,6 @@ const controlLoggingOut = function() {
   model.loggingOut;
 }
 
-// LOGGING TO SYSTEM (ENTER)
-// document.addEventListener('keydown', function (e) {
-//   if (e.key === 'Enter' && companySoldTo.value.length !== 0) {
-//     model.loggingToAccount(accounts);
-//     view.showingApp();
-//   }
-// });
-
 const init = function(){
   view.checkLog(model.logged);
   view.loggingBtn(controlLoggingIn);
