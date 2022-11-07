@@ -10,6 +10,18 @@ const addSoft = document.querySelector('.add_soft');
 const removeSoft = document.querySelector('.remove_soft');
 const addClientBtn = document.querySelector('.add_client_btn');
 
+let accountsSoldto;
+
+const generateSoldtoList = function () {
+    accountsSoldto=accounts.map(el => el.soldTo);
+}
+
+
+generateSoldtoList();
+
+// console.log(accountsSoldto.includes(1111));
+
+
 class Customer {
     
     constructor(company, sold, soft) {
@@ -19,10 +31,10 @@ class Customer {
       this.soft = soft;
     }
   
-    addSoft(val) {
-      this.soft.push(val);
-      return this;
-    }
+    // addSoft(val) {
+    //   this.soft.push(val);
+    //   return this;
+    // }
   
     //Adding removing software logic
     addSoftwareHandler () {
@@ -46,7 +58,17 @@ class Customer {
         e.preventDefault();
         const company = document.querySelector('.company').value;
         const soldTo = Number(document.querySelector('.sold_to_value').value);
-        // const soft = document.querySelector('.soft_added').innerHTML.slice(0, -1);
+        
+        //Sold-to validation
+        // if (soldTo.length !== 4) {
+        //     alert("Sold-to should have 4 digits.")
+        //     return;
+        // }
+
+        if (accountsSoldto.includes(soldTo)) {
+            alert('Sold-to is already in DB.')
+            return;
+        }
     
         const softArray = document
         .querySelector('.soft_added')
@@ -57,13 +79,15 @@ class Customer {
         accounts.push(newCustomer);
     
         //Clearing values
-        document.querySelector('.company').value = '';
-        document.querySelector('.sold_to_value').value = '';
-        document.querySelector('.soft_added').innerHTML = '';
+        clearingCompanyValues();
     })};
-
-    
   }
+
+function clearingCompanyValues() {
+    document.querySelector('.company').value = '';
+    document.querySelector('.sold_to_value').value = '';
+    document.querySelector('.soft_added').innerHTML = '';
+}
 
 export const optionsTabControl = function () {
     optionsTab.addEventListener('click', function (e) {
