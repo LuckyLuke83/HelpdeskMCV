@@ -13,6 +13,12 @@ const controlLoggingOut = function() {
   model.loggingOut;
 }
 
+const helpTopicList = function () {
+  return articleList.map(el => el.name);
+}
+
+console.log(helpTopicList());
+
 const init = function(){
   view.checkLog(model.logged);
   view.loggingBtn(controlLoggingIn);
