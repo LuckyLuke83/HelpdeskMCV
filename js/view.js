@@ -100,6 +100,15 @@ export const searchButton = function(articleDB) {
     })
 }
 
+const matchingArticle = function(articleDB, articleName) {
+  const matchedArticle = articleDB.find(el => el.name === articleName);
+    if (!matchedArticle) {
+      console.log('error');
+      return;
+    }
+    return matchedArticle;
+}
+
 //displaying topic article
 export const displayHelpTopic = function(articleDB) {
   helpTopicList.addEventListener('click', function(e) {
@@ -110,24 +119,12 @@ export const displayHelpTopic = function(articleDB) {
 }
 
 const displayingHelpArtice = function(articleDB, inputPhrase) {
-  const matchedArticle = articleDB.find(el => el.name === inputPhrase);
-    if (!matchedArticle) {
-      console.log('error');
-      return;
-    }
+  const matchedArticle = matchingArticle(articleDB, inputPhrase)
   
   searchField.value = '';
     helpTopicList.classList.add('hidden');
 
   displayigArtice(matchedArticle);
-  //   const markup = `<div class="help_topic">
-  //   <h2>${matchedArticle.title}</h2>
-  //   <p>${matchedArticle.content}</p>
-  // </div>`
-
-  // articleArea.innerHTML ='';
-
-  // articleArea.insertAdjacentHTML('afterbegin', markup);
   }
 
 const displayigArtice = function (matchedArticle) {
@@ -143,24 +140,23 @@ const displayigArtice = function (matchedArticle) {
 
 };
 
-// INstalacja pływająca 2
-// Licencja domowa 0
-//
 export const qucikLinksNavigation = function(articleDB) {
   qucikLinksContainer.addEventListener('click', function(e) {
     const clicked = e.target.closest('.quick_links_btn');
 
     if (!clicked) return;
-    console.log(clicked.dataset.tab);
-    const matchedArticle = articleDB.find(el => el.name === clicked.dataset.tab);
-    if (!matchedArticle) {
-      console.log('error');
-      return;
-    }
+    const articlename = clicked.dataset.tab;
+    // const matchedArticle = articleDB.find(el => el.name === clicked.dataset.tab);
+    // if (!matchedArticle) {
+    //   console.log('error');
+    //   return;
+    // }
+    const matchedArticle = matchingArticle(articleDB, articlename);
     displayigArtice(matchedArticle);
 
   })
 }
+
 
 //Nav manipulation
 
