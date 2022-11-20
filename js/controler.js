@@ -29,6 +29,7 @@ const init = function(){
   view.displayHelpTopic(articleList);
   view.searchButton(articleList);
   view.formSoftware();
+  view.qucikLinksNavigation(articleList);
 } 
 
 init();

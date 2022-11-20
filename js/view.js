@@ -19,6 +19,7 @@ const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
 const soldTo = document.querySelector('.sold_to');
+const qucikLinksContainer = document.querySelector('.quick_links_ul');
 const quickLinks = document.querySelectorAll('.quick_links_ul')
 
 
@@ -92,6 +93,13 @@ export const helpList = function(arr) {
  helpTopicList.insertAdjacentHTML('afterbegin', markup);
 }
 
+export const searchButton = function(articleDB) {
+  searchBtn.addEventListener('click', function() {
+    const inputPhrase = searchField.value.toLowerCase();
+    displayingHelpArtice(articleDB, inputPhrase);
+    })
+}
+
 //displaying topic article
 export const displayHelpTopic = function(articleDB) {
   helpTopicList.addEventListener('click', function(e) {
@@ -138,23 +146,21 @@ const displayigArtice = function (matchedArticle) {
 // INstalacja pływająca 2
 // Licencja domowa 0
 //
-export const qucikLinksNavigation = function() {
-  quickLinks.addEventListener('click', function(e) {
-    const clicked = e.target.closest('quick_links_btn');
+export const qucikLinksNavigation = function(articleDB) {
+  qucikLinksContainer.addEventListener('click', function(e) {
+    const clicked = e.target.closest('.quick_links_btn');
+
     if (!clicked) return;
-    console.log(clicked);
+    console.log(clicked.dataset.tab);
+    const matchedArticle = articleDB.find(el => el.name === clicked.dataset.tab);
+    if (!matchedArticle) {
+      console.log('error');
+      return;
+    }
+    displayigArtice(matchedArticle);
+
   })
 }
-
-export const searchButton = function(articleDB) {
-  searchBtn.addEventListener('click', function() {
-    const inputPhrase = searchField.value.toLowerCase();
-    displayingHelpArtice(articleDB, inputPhrase);
-  
-  })
-}
-
-
 
 //Nav manipulation
 

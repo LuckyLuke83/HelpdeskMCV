@@ -8,7 +8,7 @@ export const articleList = [
     },
     {
         name: 'przeniesienie licencji na inny komputer',
-        title: 'Jak zainstalować Solid Edge',
+        title: 'Jak przenieść licencję na inny komputer',
         content: 'W tym artykule dowiesz się jak uruchomić licencję domową Solid Edge'  
     },
     {
