@@ -66,10 +66,10 @@ export const displayHelpContent = function (e) {
     }
   
     //Creating initials
-    const initials = inputField.value
-      .split(' ')
-      .map(word => word[0])
-      .join('');
+    // const initials = inputField.value
+    //   .split(' ')
+    //   .map(word => word[0])
+    //   .join('');
   
       displayHelpContent();
   };

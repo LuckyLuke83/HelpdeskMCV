@@ -91,6 +91,15 @@ export const helpList = function(arr) {
  helpTopicList.insertAdjacentHTML('afterbegin', markup);
 }
 
+//displaying topic article
+export const displayHelpTopic = function(articleDB) {
+  helpTopicList.addEventListener('click', function(e) {
+    const clicked = e.target.closest('.help_topic_li').innerHTML;
+  
+    displayingHelpArtice(articleDB, clicked);
+  })
+}
+
 const displayingHelpArtice = function(articleDB, inputPhrase) {
   const matchedArticle = articleDB.find(el => el.name === inputPhrase);
     if (!matchedArticle) {
@@ -101,7 +110,20 @@ const displayingHelpArtice = function(articleDB, inputPhrase) {
   searchField.value = '';
     helpTopicList.classList.add('hidden');
 
-    const markup = `<div class="help_topic">
+  displayigArtice(matchedArticle);
+  //   const markup = `<div class="help_topic">
+  //   <h2>${matchedArticle.title}</h2>
+  //   <p>${matchedArticle.content}</p>
+  // </div>`
+
+  // articleArea.innerHTML ='';
+
+  // articleArea.insertAdjacentHTML('afterbegin', markup);
+  }
+
+const displayigArtice = function (matchedArticle) {
+
+  const markup = `<div class="help_topic">
     <h2>${matchedArticle.title}</h2>
     <p>${matchedArticle.content}</p>
   </div>`
@@ -109,7 +131,12 @@ const displayingHelpArtice = function(articleDB, inputPhrase) {
   articleArea.innerHTML ='';
 
   articleArea.insertAdjacentHTML('afterbegin', markup);
-  }
+
+};
+
+// INstalacja pływająca 2
+// Licencja domowa 0
+//
 
 export const searchButton = function(articleDB) {
   searchBtn.addEventListener('click', function() {
@@ -119,14 +146,7 @@ export const searchButton = function(articleDB) {
   })
 }
 
-//displaying topic article
-export const displayHelpTopic = function(articleDB) {
-  helpTopicList.addEventListener('click', function(e) {
-    const clicked = e.target.closest('.help_topic_li').innerHTML;
-  
-    displayingHelpArtice(articleDB, clicked);
-  })
-}
+
 
 //Nav manipulation
 
