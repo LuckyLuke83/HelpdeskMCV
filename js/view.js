@@ -19,6 +19,7 @@ const inputField = document.getElementById('mySearch');
 const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
 const soldTo = document.querySelector('.sold_to');
+const quickLinks = document.querySelectorAll('.quick_links_ul')
 
 
 export const checkLog = function(loggedStatus) {
@@ -137,6 +138,13 @@ const displayigArtice = function (matchedArticle) {
 // INstalacja pływająca 2
 // Licencja domowa 0
 //
+export const qucikLinksNavigation = function() {
+  quickLinks.addEventListener('click', function(e) {
+    const clicked = e.target.closest('quick_links_btn');
+    if (!clicked) return;
+    console.log(clicked);
+  })
+}
 
 export const searchButton = function(articleDB) {
   searchBtn.addEventListener('click', function() {
@@ -152,6 +160,7 @@ export const searchButton = function(articleDB) {
 
 export const navButtonsMenu = function(btn = '.nav_btn') {
   nav.addEventListener('click', function (e) {
+    e.preventDefault();
     const clicked = e.target.closest(`${btn}`);
     
     // Guard clause
