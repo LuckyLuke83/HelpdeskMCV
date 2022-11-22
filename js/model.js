@@ -64,13 +64,7 @@ export const displayHelpContent = function (e) {
     if (inputField.value.length === 0) {
       return;
     }
-  
-    //Creating initials
-    // const initials = inputField.value
-    //   .split(' ')
-    //   .map(word => word[0])
-    //   .join('');
-  
+ 
       displayHelpContent();
   };
 
