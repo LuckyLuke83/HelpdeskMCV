@@ -96,11 +96,10 @@ class AdminView {
     // const newCustomer = new Customer(company, soldTo, softArray);
 
     handler(company, soldTo, softArray)
-    // accounts.push(newCustomer);
-    
+        
     //Clearing values
-    // clearingCompanyValues();
-  })};
+    this.clearingCompanyValues();
+  }.bind(this))};
   
 }
 

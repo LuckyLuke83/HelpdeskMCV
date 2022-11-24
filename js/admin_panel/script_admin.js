@@ -9,6 +9,8 @@ function init() {
   adminView.optionsTabControl(accounts);
   adminView.generateClientsList(accounts);
   adminView.addingClient(soldToList, model.newClient);
+  adminView.addSoftwareHandler();
+  adminView.removeSoftwareHandler();
 
 }
 
