@@ -20,8 +20,7 @@ const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
 const soldTo = document.querySelector('.sold_to');
 const qucikLinksContainer = document.querySelector('.quick_links_ul');
-const quickLinks = document.querySelectorAll('.quick_links_ul')
-
+// const quickLinks = document.querySelectorAll('.quick_links_ul')
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {

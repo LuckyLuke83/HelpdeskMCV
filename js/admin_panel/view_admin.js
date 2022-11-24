@@ -1,5 +1,5 @@
 'use strict'
-import {accounts} from '../customerDataBase.js'
+// import {accounts} from '../customerDataBase.js'
 
 const optionBtns = document.querySelectorAll('.options_tab_item');
 const optionsTab = document.querySelector('.options_tab_items');
@@ -12,84 +12,50 @@ const addClientBtn = document.querySelector('.add_client_btn');
 
 let accountsSoldto;
 
-const generateSoldtoList = function () {
-    accountsSoldto=accounts.map(el => el.soldTo);
-}
 
 
-generateSoldtoList();
+class AdminView {
 
-// console.log(accountsSoldto.includes(1111));
-
-
-class Customer {
-    
-    constructor(company, sold, soft) {
-      this.company = company;
-      this.soldTo = sold;
-      //soft dodawany z formularza poprzez push do array
-      this.soft = soft;
-    }
+  generateClientsList(accountsDB) {
+    clientList.innerHTML = '';
+    let html = `<div class="description_row">
+    <div class="description_lp td">L.P.</div>
+    <div class="description td">Nazwa</div>
+    <div class="description td">Sold-to</div>
+    <div class="description td">Oprogramowanie</div>
+  </div>`;
   
-    // addSoft(val) {
-    //   this.soft.push(val);
-    //   return this;
-    // }
-  
-    //Adding removing software logic
-    addSoftwareHandler () {
-        addSoft.addEventListener('click', function () {
-            const software = `${document.querySelector('#software').value} `;
-            document
-            .querySelector('.soft_added')
-            .insertAdjacentHTML('beforeend', software);
-        });
-    }
-    
-    removeSoftwareHandler () {
-        removeSoft.addEventListener('click', function () {
-            document.querySelector('.soft_added').innerHTML = '';
-        });
-    }
+  accountsDB.forEach(
+      (el, index) => (html += `<div class="description_row">
+      <div class="description_lp">${index + 1}</div>
+      <div class="description">${el.company}</div>
+      <div class="description">${el.soldTo}</div>
+      <div class="description">${el.soft}</div>
+      </div>`)
+    );
+    clientList.insertAdjacentHTML('afterbegin', html);
+  };
 
-  //Adding new client
-    addingClient() {
-        addClientBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const company = document.querySelector('.company').value;
-        const soldTo = Number(document.querySelector('.sold_to_value').value);
-        
-        //Sold-to validation
-        // if (soldTo.length !== 4) {
-        //     alert("Sold-to should have 4 digits.")
-        //     return;
-        // }
-
-        if (accountsSoldto.includes(soldTo)) {
-            alert('Sold-to is already in DB.')
-            return;
-        }
-    
-        const softArray = document
-        .querySelector('.soft_added')
-        .innerHTML.slice(0, -1)
-        .split(' ');
-    
-        const newCustomer = new Customer(company, soldTo, softArray);
-        accounts.push(newCustomer);
-    
-        //Clearing values
-        clearingCompanyValues();
-    })};
-  }
-
-function clearingCompanyValues() {
+  clearingCompanyValues() {
     document.querySelector('.company').value = '';
     document.querySelector('.sold_to_value').value = '';
     document.querySelector('.soft_added').innerHTML = '';
-}
+  }
 
-export const optionsTabControl = function () {
+  addSoftwareHandler() {
+    addSoft.addEventListener('click', function () {
+      const software = `${document.querySelector('#software').value} `;
+      document.querySelector('.soft_added').insertAdjacentHTML('beforeend', software);
+    });
+  }
+
+  removeSoftwareHandler() {
+    removeSoft.addEventListener('click', function () {
+    document.querySelector('.soft_added').innerHTML = '';
+    });
+  }
+
+  optionsTabControl() {
     optionsTab.addEventListener('click', function (e) {
     const clicked = e.target.closest('.options_tab_item');
   
@@ -109,32 +75,33 @@ export const optionsTabControl = function () {
     }
 
     // Activate content area
-    document
-      .querySelector(`.options_content_${clicked.dataset.tab}`)
-      .classList.add('options_content_active');
+    document.querySelector(`.options_content_${clicked.dataset.tab}`).classList.add('options_content_active');
   })};
 
-  //Generating Clients list on "Lista klientów"
- export const generateClientsList = function (accountsDB) {
-    clientList.innerHTML = '';
-    let html = `<div class="description_row">
-    <div class="description_lp td">L.P.</div>
-    <div class="description td">Nazwa</div>
-    <div class="description td">Sold-to</div>
-    <div class="description td">Oprogramowanie</div>
-  </div>`;
-  
-  accountsDB.forEach(
-      (el, index) =>
-        (html += `<div class="description_row">
-    <div class="description_lp">${index + 1}</div>
-    <div class="description">${el.company}</div>
-    <div class="description">${el.soldTo}</div>
-    <div class="description">${el.soft}</div>
-  </div>`)
-    );
-    clientList.insertAdjacentHTML('afterbegin', html);
-  };
+  addingClient(soldToList,handler) {
+    addClientBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log(soldToList);
+    const company = document.querySelector('.company').value;
+    const soldTo = Number(document.querySelector('.sold_to_value').value);
+        
+    if (soldToList.includes(soldTo)) {
+        alert('Sold-to is already in DB.')
+        return;
+      }
 
-  export default new Customer();
+    const softArray = document.querySelector('.soft_added').innerHTML.slice(0, -1).split(' ');
+    
+    // const newCustomer = new Customer(company, soldTo, softArray);
+
+    handler(company, soldTo, softArray)
+    // accounts.push(newCustomer);
+    
+    //Clearing values
+    // clearingCompanyValues();
+  })};
+  
+}
+
+export default new AdminView();
 
