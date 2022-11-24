@@ -6,7 +6,7 @@ import * as model from  './model_admin.js'
 let soldToList = model.generateSoldtoList();
 
 function init() {
-  adminView.optionsTabControl();
+  adminView.optionsTabControl(accounts);
   adminView.generateClientsList(accounts);
   adminView.addingClient(soldToList, model.newClient);
 

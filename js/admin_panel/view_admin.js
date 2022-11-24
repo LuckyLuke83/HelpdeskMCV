@@ -55,7 +55,7 @@ class AdminView {
     });
   }
 
-  optionsTabControl() {
+  optionsTabControl(accountsDB) {
     optionsTab.addEventListener('click', function (e) {
     const clicked = e.target.closest('.options_tab_item');
   
@@ -71,12 +71,13 @@ class AdminView {
   
     //Generating Clients list in case of going to Lista klientów
     if (clicked.classList.contains('btn1')) {
-        generateClientsList(accounts);
+      console.log(this)
+        this.generateClientsList(accountsDB);
     }
 
     // Activate content area
     document.querySelector(`.options_content_${clicked.dataset.tab}`).classList.add('options_content_active');
-  })};
+  }.bind(this))};
 
   addingClient(soldToList,handler) {
     addClientBtn.addEventListener('click', function (e) {
