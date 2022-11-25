@@ -71,8 +71,7 @@ class AdminView {
   
     //Generating Clients list in case of going to Lista klientów
     if (clicked.classList.contains('btn1')) {
-      console.log(this)
-        this.generateClientsList(accountsDB);
+      this.generateClientsList(accountsDB);
     }
 
     // Activate content area

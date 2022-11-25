@@ -11,6 +11,7 @@ const btnLog = document.querySelector('.btn_log');
 const logOut = document.querySelector('.log_out');
 const navButtons = document.querySelectorAll('.nav_btn'); //Wszystkie Przyciski 
 const nav = document.querySelector('.nav'); //Div with all buttons
+const welcomeCustomer = document.querySelector('.client_name');
 const sectionElements = document.querySelectorAll('.section');
 const helpTopicList = document.querySelector('.help_topics_ul');
 const helpSubject = helpTopicList.getElementsByTagName('li'); //All containers that are controled by buttons
@@ -20,7 +21,14 @@ const downloadSection = document.querySelector('.section-2');
 const softDropdown = document.querySelector('.software_row');
 const soldTo = document.querySelector('.sold_to');
 const qucikLinksContainer = document.querySelector('.quick_links_ul');
+
 // const quickLinks = document.querySelectorAll('.quick_links_ul')
+
+function displayClientName(accountData) {
+  welcomeCustomer.innerHTML = '';
+  const markup = `Witaj ${accountData.company}`
+  welcomeCustomer.insertAdjacentHTML('afterbegin', markup);
+}
 
 export const checkLog = function(loggedStatus) {
   if (loggedStatus) {
@@ -35,7 +43,7 @@ export const checkLog = function(loggedStatus) {
 export const loggingBtn = function (handler) {
   btnLog.addEventListener('click', function (e) {
   e.preventDefault();
-  // showingApp();
+  
   handler();
 })};
 
@@ -193,9 +201,6 @@ accountSettingsClose.addEventListener('click', function () {
   hiddingSettings(accountSettings);
 });
 
-
-
-
 const hidingApp = function() {
     // Displaying Login box
     logWindow.classList.remove('hidden');
@@ -219,12 +224,16 @@ export const showingApp = function(fetchedAccount) {
     // Displaying main page
     appWindow.classList.remove('hidden');
 
+    console.log(fetchedAccount)
     //guard clause for checkLog() function
     if (!fetchedAccount) return;
+    displayClientName(fetchedAccount);
     generatingDownloadSoft(fetchedAccount)
+
   }
 
-const generatingDownloadSoft = function (currentAccount) {
+// const generatingDownloadSoft = function (currentAccount) {
+function generatingDownloadSoft(currentAccount) {
 const account = currentAccount
   
   //creating markup for Download section

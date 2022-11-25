@@ -159,7 +159,7 @@ h3 {
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
   height: 6rem;
@@ -191,6 +191,12 @@ aside p {
 
 .section-2 {
   padding: 1rem 1rem;
+}
+
+.client_name{
+  margin-left: 1rem;;
+  color: var(--white);
+  font-size: 1.6rem;
 }
 
 .nav_logo img {
