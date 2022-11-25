@@ -1,6 +1,6 @@
 'use strict';
 
-export const accounts = [
+export let accounts = [
   {
     company: 'ZPUE',
     soldTo: 1111,

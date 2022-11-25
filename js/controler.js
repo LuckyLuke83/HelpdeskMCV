@@ -1,12 +1,13 @@
 'use strict';
-import {accounts} from './customerDataBase.js'
 import * as view from './view.js'
 import * as model from './model.js' 
 import {articleList} from './articlesDatabase.js'
 
+const acconuntsDB = JSON.parse(localStorage.getItem('acconuntsDB'));
+
 // LOGGING TO SYSTEM (Button)
 const controlLoggingIn = function() {
-  model.loggingToAccount(accounts, view.showingApp);
+  model.loggingToAccount(acconuntsDB, view.showingApp);
 }
 
 const controlLoggingOut = function() {
