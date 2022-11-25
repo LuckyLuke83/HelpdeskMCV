@@ -17,30 +17,6 @@
   position: relative;
 }
 
-.applicationBtn {
-  position: absolute;
-  top: 2rem;
-  right: 5rem;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 3rem;
-  background-color: var(--primary1);
-  text-decoration: none;
-  font-family: inherit;
-  font-size: 1.4rem;
-  color: var(--white);
-  transition: var(--transition);
-  border-radius: 2px; 
-}
-
-.applicationBtn:hover,
-.applicationBtn:active {
-  background-color: var(--primary1_shades);
-}
-
 .log_window {
   width: 100vw;
   height: 100vh;
@@ -132,6 +108,24 @@ main {
   background-color: var(--grey);
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  border-radius: var(--border_radius);
+  background-color: var(--primary1);
+  transition: var(--transition);
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px; 
+}
+
+.btn:hover {
+  background-color: var(--primary2);
+}
+
 .options_tab {
   padding: 0 2rem 3rem 2rem;
   /* height: 20rem; */
@@ -147,25 +141,37 @@ main {
   transform: translateY(-50%);
 }
 
+
+
+.applicationBtn {
+  position: absolute;
+  top: 2rem;
+  right: 5rem;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  height: 3rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
 .options_tab_item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
   width: 20%;
   height: 4rem;
-  border: none;
-  cursor: pointer;
-  color: var(--white);
-  border-radius: var(--border_radius);
   font-size: 1.6rem;
-  font-family: inherit;
-  background-color: var(--primary1);
-  transition: var(--transition);
 }
 
+.add_client_btn {
+  gap: 1rem;
+  width: 15rem;
+  height: 3rem;
+  margin-top: 3rem;
+  font-size: 1.4rem;
+}
+
+
 .item_active {
-  background-color: var(--primary1_shades);
+  background-color: var(--primary2);
   transform: translateY(-15%);
 }
 
@@ -275,20 +281,3 @@ h3 {
   border: 2px solid var(--primary1);
 }
 
-.add_client_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 15rem;
-  height: 3rem;
-  margin-top: 3rem;
-  border: none;
-  cursor: pointer;
-  color: var(--white);
-  border-radius: var(--border_radius);
-  font-size: 1.4rem;
-  font-family: inherit;
-  background-color: var(--primary1);
-  transition: var(--transition);
-}
